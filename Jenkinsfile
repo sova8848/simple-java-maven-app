@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh "sudo su"
+                sh "su"
                 sh 'whoami'
                 sh './jenkins/scripts/deliver.sh' 
             }
