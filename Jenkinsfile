@@ -31,7 +31,7 @@ pipeline {
                 sh 'whoami'
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
                 sh 'NAME=$(mvn help:evaluate -Dexpression=project.name | grep "^[^\\[]")'
-                sh 'VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]")'
+                sh 'VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\\[]")'
                 sh 'java -jar target/${NAME}-${VERSION}.jar'
             }
         }
