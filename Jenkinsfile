@@ -45,7 +45,7 @@ pipeline {
                         "files": [
                             {
                                 "pattern": "/var/jenkins_home/workspace/demo/target/surefire-reports/*",
-                                "target": "artifact-repo-maven-remote/"
+                                "target": "example-repo-local/"
                             }
                         ]
                     }"""
