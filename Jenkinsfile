@@ -35,5 +35,23 @@ pipeline {
                 sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
             }
         }
+
+        
+        stage('Publish to Artifactory') {
+            steps {
+                script {
+                    def server = Artifactory.server 'artifactory'
+                    def uploadSpec = """{
+                        "files": [
+                            {
+                                "pattern": "/var/jenkins_home/workspace/demo/target/surefire-reports/*",
+                                "target": "artifact-repo-maven-remote/"
+                            }
+                        ]
+                    }"""
+                    server.upload spec: uploadSpec
+                }
+            }
+        }
     }
 }
